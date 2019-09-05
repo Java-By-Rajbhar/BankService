@@ -26,17 +26,15 @@ public class IbanController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IbanController.class);
     @Autowired
     IbanService ibanService;
-    
-	@GetMapping("/bankApi")
-	public ResponseEntity<String> callBankApi(){
-		
-		LOGGER.info("IbanController :: callBankApi --");
-		return new ResponseEntity<String>("Hello! Bank Api is Up", HttpStatus.OK);
-	}
-	
+	/**
+	 * This method is use to get bank name based on iban number
+	 * @param ibanRequestDto
+	 * @return ResponseEntity<IbanResponseDto>
+	 */
 	@PostMapping("/accounts")
 	public ResponseEntity<IbanResponseDto> getBankName(@RequestBody IbanRequestDto ibanRequestDto)
 	{
+		LOGGER.info("Inside getBankName method of IbanController class");
 		IbanResponseDto response = ibanService.getBankNameByIban(ibanRequestDto);
 		
 		return new ResponseEntity<IbanResponseDto>(response, HttpStatus.OK);

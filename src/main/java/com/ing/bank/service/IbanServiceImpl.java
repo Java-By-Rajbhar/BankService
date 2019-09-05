@@ -21,7 +21,7 @@ public class IbanServiceImpl implements IbanService{
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(IbanServiceImpl.class);
 	@Autowired
-	IbanRepository IbanRepository;
+	IbanRepository ibanRepository;
     /**
      * This method is use to get bank name by using iban 
      * @param iban ,not null
@@ -32,7 +32,7 @@ public class IbanServiceImpl implements IbanService{
 	public IbanResponseDto getBankNameByIban(IbanRequestDto ibanRequestDto) {
 		LOGGER.info("inside getBankNameByIban method of IbanServiceImpl class");
 		Integer code = getBankName(ibanRequestDto.getIban());
-		IbanCode ibanCode = IbanRepository.findByIbanCode(code);
+		IbanCode ibanCode = ibanRepository.findByIbanCode(code);
 		if(ibanCode!=null)
 		{
 			IbanResponseDto responseDto = new IbanResponseDto();
