@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(InvalidIbanCodeException.class)
-	public ResponseEntity<ErrorResponse> credentialsInvalidExceptionHandler(InvalidIbanCodeException ex) {
+	public ResponseEntity<ErrorResponse> invalidIbanCodeExceptionHandler(InvalidIbanCodeException ex) {
 		ErrorResponse error = new ErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND.value(), "fail");
 
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.NOT_FOUND);

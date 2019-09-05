@@ -11,5 +11,7 @@ import com.ing.bank.entity.IbanCode;
  */
 @Repository
 public interface IbanRepository extends JpaRepository<IbanCode, Integer> {
+	
+	public IbanCode findByIbanCode(Integer ibanCode);
 
 }
